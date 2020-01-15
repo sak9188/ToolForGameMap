@@ -1,0 +1,79 @@
+﻿<Window x:Class="WpfApplicationTest1.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:sys="clr-namespace:System;assembly=mscorlib"
+        Title="地图数据生成器" Height="600" Width="800"
+        SizeToContent="WidthAndHeight"
+        >
+    <Window.Resources>
+        <Style TargetType="WrapPanel" x:Key="WrapStack">
+            <Setter Property="Margin" Value="0 4 0 0"></Setter>
+            <Setter Property="Width" Value="200"></Setter>
+        </Style>
+    </Window.Resources>
+    <StackPanel Margin="5 5 5 5" Orientation="Horizontal">
+        <!-- 左右分割 -->
+        <StackPanel Orientation="Vertical">
+            <!-- 左面板 -->
+            <WrapPanel Style="{StaticResource WrapStack}">
+                <Label Content="图片路径"/>
+                <TextBox x:Name="TBoxImgPath" Width="104" IsEnabled="False" VerticalAlignment="Center" Height="26" Text="点击选择路径" />
+                <Button Padding="5 0 5 0" BorderThickness="0" Content="选择" Click="Button_Click_Search_Img"/>
+            </WrapPanel>
+            <WrapPanel Style="{StaticResource WrapStack}" >
+                <Label Content="图片缩放因子"/>
+                <TextBox x:Name="TBoxScale" Width="118" TextChanged="TBoxScale_TextChanged_1"/>
+            </WrapPanel>
+            <WrapPanel Style="{StaticResource WrapStack}">
+                <Label Content="图格大小"/>
+                <TextBox Width="70" />
+                <Button Content="生成" Width="72"/>
+            </WrapPanel>
+            <WrapPanel Style="{StaticResource WrapStack}">
+                <Button Width="100">导入cell list json</Button>
+                <Button Width="100">生成map json</Button>
+            </WrapPanel>
+            <WrapPanel>
+                <!-- cell信息 -->
+                <StackPanel Orientation="Vertical" Width="200">
+                    <Label HorizontalAlignment="Center" Content="---图格信息---"/>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*"></ColumnDefinition>
+                            <ColumnDefinition Width="3*"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        
+                        <Label Grid.Row="0" Grid.Column="0" Content="Name"></Label>
+                        <TextBox Grid.Row="0" Grid.Column="1" Margin="0 2 0 2"></TextBox>
+
+                        <Label Grid.Row="1" Grid.Column="0" Content="AVO"></Label>
+                        <TextBox Grid.Row="1" Grid.Column="1" Margin="0 2 0 2"></TextBox>
+
+                        <Label Grid.Row="2" Grid.Column="0" Content="DEF"></Label>
+                        <TextBox Grid.Row="2" Grid.Column="1" Margin="0 2 0 2"></TextBox>
+
+                        <Label Grid.Row="3" Grid.Column="0" Content="ALT"></Label>
+                        <TextBox Grid.Row="3" Grid.Column="1" Margin="0 2 0 2"></TextBox>
+
+                        <Label Grid.Row="4" Grid.Column="0" Content="Other"></Label>
+                        <TextBox Grid.Row="4" Grid.Column="1" Margin="0 2 0 2"></TextBox>
+                    </Grid>
+                </StackPanel>
+            </WrapPanel>
+            <StackPanel>
+                <Label Content="###TODO cell list 选择窗口###"></Label>
+            </StackPanel>
+        </StackPanel>
+        <StackPanel>
+            <Image x:Name="BackgroundImage"/>
+        </StackPanel>
+        
+    </StackPanel>
+</Window>
