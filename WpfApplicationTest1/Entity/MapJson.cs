@@ -5,8 +5,6 @@ using System.Numerics;
 using System.Text;
 using System.Threading.Tasks;
 
-using Cell = WpfApplicationTest1.Entity.CellListJson.Cell;
-
 namespace WpfApplicationTest1.Entity
 {
     public class MapJson

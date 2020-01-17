@@ -1,0 +1,32 @@
+﻿<ListBoxItem x:Class="WpfApplicationTest1.ToolControls.ToolListItem"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="48" Width="172">
+    <Grid Width="144">
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>        
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions> 
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Rectangle Grid.Row="0" Grid.Column="0" Grid.RowSpan="2" Fill="AliceBlue" Width="48" Height="48"></Rectangle>
+        <Label Grid.Row="0" Grid.Column="1" x:Name="name">name</Label>
+        <Rectangle Grid.Row="0" Grid.Column="1" Width="4" Height="4" Fill="#FF666060" VerticalAlignment="Bottom" HorizontalAlignment="Left">
+        </Rectangle>
+        <Label Grid.Row="0" Grid.Column="2" x:Name="avo">avo</Label>
+        <Rectangle Grid.Row="0" Grid.Column="2" Width="4" Height="4" Fill="#FFE6BC72" VerticalAlignment="Bottom" HorizontalAlignment="Left">
+        </Rectangle>
+        <Label Grid.Row="1" Grid.Column="1" x:Name="def">def</Label>
+        <Rectangle Grid.Row="1" Grid.Column="1" Width="4" Height="4" Fill="#FF619FEA" VerticalAlignment="Bottom" HorizontalAlignment="Left">
+        </Rectangle>
+        <Label Grid.Row="1" Grid.Column="2" x:Name="alt">alt</Label>
+        <Rectangle Grid.Row="1" Grid.Column="2" Width="4" Height="4" Fill="#FFE66060" VerticalAlignment="Bottom" HorizontalAlignment="Left">
+        </Rectangle>
+    </Grid>
+</ListBoxItem>

@@ -59,6 +59,9 @@
     <Compile Include="Entity\MapJson.cs" />
     <Compile Include="MainWindowEvent.cs" />
     <Compile Include="ToolControls\ToolButton.cs" />
+    <Compile Include="ToolControls\ToolListItem.xaml.cs">
+      <DependentUpon>ToolListItem.xaml</DependentUpon>
+    </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -73,6 +76,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="ToolControls\ToolControls.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ToolControls\ToolListItem.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
