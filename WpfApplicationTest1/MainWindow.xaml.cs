@@ -120,6 +120,27 @@ namespace WpfApplicationTest1
             ImageCanvas.Width = BackgroundImage.Width;
             ImageCanvas.Height = BackgroundImage.Height;
         }
+
+        private void Import_Cell_List_Button_Click(object sender, RoutedEventArgs e)
+        {
+            using (Winform.OpenFileDialog openFileDialog = new Winform.OpenFileDialog())
+            {
+                openFileDialog.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory);
+                openFileDialog.Filter = "json文件 (*.json)|*.json|所有文件 (*.*)|*.*";
+                openFileDialog.FilterIndex = 1;
+                openFileDialog.RestoreDirectory = true;
+                if (openFileDialog.ShowDialog() == Winform.DialogResult.OK)
+                {
+                    BitmapImage bi = new BitmapImage();
+                    bi.BeginInit();
+                    bi.UriSource = new Uri(openFileDialog.FileName, UriKind.Absolute);
+                    bi.EndInit();
+                    BackgroundImage.Source = bi;
+                    ScaleBackgroundImage(1);
+                    TBoxImgPath.Text = openFileDialog.FileName;
+                }
+            }
+        }
      
     }
 }

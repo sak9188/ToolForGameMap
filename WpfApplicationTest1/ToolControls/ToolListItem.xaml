@@ -17,16 +17,16 @@
         </Grid.ColumnDefinitions>
         <Rectangle Grid.Row="0" Grid.Column="0" Grid.RowSpan="2" Fill="#FFCFDCE8" Width="48" Height="48"></Rectangle>
         <Label Grid.Row="0" Grid.Column="1" x:Name="name">name</Label>
-        <Rectangle Grid.Row="0" Grid.Column="1" Width="4" Height="4" Fill="#FF666060" VerticalAlignment="Bottom" HorizontalAlignment="Left">
+        <Rectangle Grid.Row="0" Grid.Column="1" Width="8" Height="4" Fill="#FF666060" VerticalAlignment="Bottom" HorizontalAlignment="Left">
         </Rectangle>
         <Label Grid.Row="0" Grid.Column="2" x:Name="avo">avo</Label>
-        <Rectangle Grid.Row="0" Grid.Column="2" Width="4" Height="4" Fill="#FFE6BC72" VerticalAlignment="Bottom" HorizontalAlignment="Left">
+        <Rectangle Grid.Row="0" Grid.Column="2" Width="8" Height="4" Fill="#FFE6BC72" VerticalAlignment="Bottom" HorizontalAlignment="Left">
         </Rectangle>
         <Label Grid.Row="1" Grid.Column="1" x:Name="def">def</Label>
-        <Rectangle Grid.Row="1" Grid.Column="1" Width="4" Height="4" Fill="#FF6C7BDC" VerticalAlignment="Bottom" HorizontalAlignment="Left">
+        <Rectangle Grid.Row="1" Grid.Column="1" Width="8" Height="4" Fill="#FF6C7BDC" VerticalAlignment="Bottom" HorizontalAlignment="Left">
         </Rectangle>
         <Label Grid.Row="1" Grid.Column="2" x:Name="alt" >alt</Label>
-        <Rectangle Grid.Row="1" Grid.Column="2" Width="4" Height="4" Fill="#FFE66060" VerticalAlignment="Bottom" HorizontalAlignment="Left">
+        <Rectangle Grid.Row="1" Grid.Column="2" Width="8" Height="4" Fill="#FFE66060" VerticalAlignment="Bottom" HorizontalAlignment="Left">
         </Rectangle>
     </Grid>
 </ListBoxItem>

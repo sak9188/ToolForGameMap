@@ -2,7 +2,7 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:tool="clr-namespace:WpfApplicationTest1.ToolControls"
-        Title="地图数据生成器" Height="585" Width="616"
+        Title="地图数据生成器" Height="588" Width="616"
         SizeToContent="WidthAndHeight"
         Background="#FAFAFAFA"
         >
@@ -77,7 +77,7 @@
             <StackPanel>
                 <Label Content="---CELL选择---" HorizontalAlignment="Center"></Label>
                 <WrapPanel>
-                    <Button Width="100">导入cell list json</Button>
+                    <Button Width="100" Click="Import_Cell_List_Button_Click">导入cell list</Button>
                     <Button Width="100">
                         <Button.Background>
                             <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
@@ -87,9 +87,7 @@
                             </LinearGradientBrush>
                         </Button.Background> 删除</Button>
                 </WrapPanel>
-                <ListBox Height="200">
-                    <tool:ToolListItem></tool:ToolListItem>
-                </ListBox>
+                <ListBox Height="200" Margin="0 5 0 0" x:Name="CellListBox"></ListBox>
             </StackPanel>
         </StackPanel>
         <Canvas x:Name="ImageCanvas" Margin="5,0" VerticalAlignment="Top" HorizontalAlignment="Left">
