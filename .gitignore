@@ -1,3 +1,5 @@
 /WpfApplicationTest1/obj
 /WpfApplicationTest1/bin
 *.suo
+*.psess
+*.vsp
