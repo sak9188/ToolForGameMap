@@ -5,6 +5,8 @@ using System.Numerics;
 using System.Text;
 using System.Threading.Tasks;
 
+using Cell = WpfApplicationTest1.Entity.CellListJson.Cell;
+
 namespace WpfApplicationTest1.Entity
 {
     public class MapJson
@@ -14,5 +16,18 @@ namespace WpfApplicationTest1.Entity
         public int width;
         public int height;
         public Dictionary<int, string> content;
+    }
+
+    /// <summary>
+    /// 中间显示实体类
+    /// </summary>
+    public static class MapJsonView
+    {
+        public static MapJson Map { set; get; }
+
+        public static Cell GetCellData(int idx)
+        {
+            throw new NotImplementedException();
+        }        
     }
 }

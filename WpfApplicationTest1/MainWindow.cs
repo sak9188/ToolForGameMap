@@ -57,6 +57,7 @@ namespace WpfApplicationTest1
                             ImageCanvas.Children.Add(button);
                             Canvas.SetLeft(button, j + BackgroundImage.Margin.Left);
                             Canvas.SetTop(button, i + BackgroundImage.Margin.Top);
+                            button.Click += new RoutedEventHandler(ToolButton_Click);
                         }
                         index++;
                     }                    

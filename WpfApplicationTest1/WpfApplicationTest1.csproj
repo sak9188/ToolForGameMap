@@ -55,7 +55,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Entity\CellListJson.cs" />
     <Compile Include="Entity\MapJson.cs" />
+    <Compile Include="MainWindowEvent.cs" />
     <Compile Include="ToolControls\ToolButton.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>

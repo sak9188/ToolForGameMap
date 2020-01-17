@@ -76,6 +76,8 @@
             </WrapPanel>
             <StackPanel>
                 <Label Content="###TODO cell list 选择窗口###"></Label>
+                <WrapPanel>
+                </WrapPanel>
             </StackPanel>
         </StackPanel>
         <Canvas x:Name="ImageCanvas" Margin="5,0" VerticalAlignment="Top" HorizontalAlignment="Left">
