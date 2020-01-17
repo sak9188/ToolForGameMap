@@ -36,17 +36,17 @@ namespace WpfApplicationTest1
                 double dCellLen = this.cellLen * this.scale;
                 // 清理 
                 ImageCanvas.Children.RemoveRange(1, ImageCanvas.Children.Count - 1);
-                for (double i = 0; i < BackgroundImage.Source.Width * scale; i += dCellLen)
+                for (double i = 0; i < BackgroundImage.Source.Height * scale; i += dCellLen)
                 {
-                    for (double j = 0; j < BackgroundImage.Source.Height * scale; j += dCellLen)
+                    for (double j = 0; j < BackgroundImage.Source.Width * scale; j += dCellLen)
                     {
                         if (iter.Current != null)
                         {
                             iter.Current.SetCellLen(dCellLen);
                             // 放置
                             ImageCanvas.Children.Add(iter.Current);
-                            Canvas.SetLeft(iter.Current, i + BackgroundImage.Margin.Left);
-                            Canvas.SetTop(iter.Current, j + BackgroundImage.Margin.Top);
+                            Canvas.SetLeft(iter.Current, j + BackgroundImage.Margin.Left);
+                            Canvas.SetTop(iter.Current, i + BackgroundImage.Margin.Top);
                             iter.MoveNext();
                         }
                         else
@@ -55,8 +55,8 @@ namespace WpfApplicationTest1
                             buttonlist.Add(button);
                             // 放置
                             ImageCanvas.Children.Add(button);
-                            Canvas.SetLeft(button, i + BackgroundImage.Margin.Left);
-                            Canvas.SetTop(button, j + BackgroundImage.Margin.Top);
+                            Canvas.SetLeft(button, j + BackgroundImage.Margin.Left);
+                            Canvas.SetTop(button, i + BackgroundImage.Margin.Top);
                         }
                         index++;
                     }                    
