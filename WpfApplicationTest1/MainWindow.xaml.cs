@@ -130,14 +130,8 @@ namespace WpfApplicationTest1
                 openFileDialog.FilterIndex = 1;
                 openFileDialog.RestoreDirectory = true;
                 if (openFileDialog.ShowDialog() == Winform.DialogResult.OK)
-                {
-                    BitmapImage bi = new BitmapImage();
-                    bi.BeginInit();
-                    bi.UriSource = new Uri(openFileDialog.FileName, UriKind.Absolute);
-                    bi.EndInit();
-                    BackgroundImage.Source = bi;
-                    ScaleBackgroundImage(1);
-                    TBoxImgPath.Text = openFileDialog.FileName;
+                {   
+                    GenerateCellList(openFileDialog.FileName);
                 }
             }
         }

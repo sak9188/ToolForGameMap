@@ -10,6 +10,7 @@ namespace WpfApplicationTest1.Entity
     public class CellListJson
     {
         public BigInteger md5;
+        public string name;
         public List<Cell> list;
     }
 

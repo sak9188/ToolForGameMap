@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
+using WpfApplicationTest1.Entity;
+using WpfApplicationTest1.Help;
 using WpfApplicationTest1.ToolControls;
 
 namespace WpfApplicationTest1
@@ -29,7 +31,8 @@ namespace WpfApplicationTest1
         // 生成button
         private void GenerateButton()
         {
-            if (BackgroundImage.Source != null && this.cellLen != 0)
+            // cellLen 不能太小否则内存爆炸，并且卡炸
+            if (BackgroundImage.Source != null && this.cellLen >=32)
             {
                 var iter = buttonlist.GetEnumerator();
                 int index = 0;
@@ -66,9 +69,20 @@ namespace WpfApplicationTest1
         }
 
         /// 生成cell list
-        private void GenerateCellList()
+        private void GenerateCellList(String path)
         {
-
+            CellListJson json = JsonHelp.LoadJsonFile(path);
+            IList<Cell> list = json.list;
+            if (list != null)
+            {
+                int index = 1;
+                foreach (Cell item in list)
+                {
+                    CellListBox.Items.Add(new ToolListItem(item, index));
+                    index++;
+                }
+            }
+            listName.Content = json.name;
         }
     }
 }

@@ -21,7 +21,13 @@ namespace WpfApplicationTest1.ToolControls
             TP = (ControlTemplate)rd["ToolButton"];
         }
 
-        public int Index { get; set; }
+        private int index;
+        public int Index
+        {
+            get { return index; }
+            set { index = value; base.Content = value; }
+        }
+
 
         public ToolButton()
         {
@@ -38,7 +44,6 @@ namespace WpfApplicationTest1.ToolControls
             : this()
         {
             Index = num;
-            base.Content = num;
             this.SetCellLen(cellLen);
         }
 
