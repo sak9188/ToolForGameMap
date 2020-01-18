@@ -31,7 +31,7 @@ namespace WpfApplicationTest1.ToolControls
 
         public ToolButton()
         {
-            base.Background = null;
+            base.Background = Brushes.Transparent;
             base.BorderBrush = new SolidColorBrush((Color)ColorConverter.ConvertFromString(borderColor));
             base.Template = TP;
         }
