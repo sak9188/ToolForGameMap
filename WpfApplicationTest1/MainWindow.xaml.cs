@@ -17,6 +17,7 @@ using System.Windows.Forms;
 using Winform = System.Windows.Forms;
 using System.Text.RegularExpressions;
 using WpfApplicationTest1.Entity;
+using WpfApplicationTest1.Help;
 
 namespace WpfApplicationTest1
 {
@@ -137,9 +138,26 @@ namespace WpfApplicationTest1
             }
         }
 
+        private void Export_Cell_List_Button_Click(object sender, RoutedEventArgs e)
+        {
+            // JsonHelp.ListToFile(json, );
+            using (Winform.OpenFileDialog openFileDialog = new Winform.OpenFileDialog())
+            {
+                openFileDialog.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory);
+                openFileDialog.Filter = "json文件 (*.json)|*.json|所有文件 (*.*)|*.*";
+                openFileDialog.FilterIndex = 1;
+                openFileDialog.RestoreDirectory = true;
+                if (openFileDialog.ShowDialog() == Winform.DialogResult.OK)
+                {
+                    GenerateCellList(openFileDialog.FileName);
+                }
+            }
+        }
+
         private string priviousName;
         private void Button_Click_Add_Modify(object sender, RoutedEventArgs e)
         {
+            if (json == null) return;
             int index = CellListBox.SelectedIndex;
             if (priviousName != TBoxName.Text)
             {

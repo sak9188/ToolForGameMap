@@ -28,5 +28,10 @@ namespace WpfApplicationTest1.Help
             CellListJson objJson = JsonConvert.DeserializeObject<CellListJson>(jsonText);
             return objJson;
         }
+
+        public static bool ListToFile(CellListJson list, string path)
+        {
+            return false;
+        }
     }
 }
