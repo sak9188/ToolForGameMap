@@ -16,6 +16,7 @@ using System.Windows.Forms;
 
 using Winform = System.Windows.Forms;
 using System.Text.RegularExpressions;
+using WpfApplicationTest1.Entity;
 
 namespace WpfApplicationTest1
 {
@@ -135,6 +136,35 @@ namespace WpfApplicationTest1
                 }
             }
         }
-     
+
+        private string priviousName;
+        private void Button_Click_Add_Modify(object sender, RoutedEventArgs e)
+        {
+            int index = CellListBox.SelectedIndex;
+            if (priviousName != TBoxName.Text)
+            {
+                // 添加
+                Cell cell = new Cell()
+                {
+                    name = TBoxName.Text,
+                    avo = Convert.ToInt32(TBoxAVO.Text),
+                    def = Convert.ToInt32(TBoxDEF.Text),
+                    alt = Convert.ToInt32(TBoxALT.Text),
+                    other = TBoxOTHER.Text
+                }; 
+                json.list.Insert(index+1, cell);
+            }else
+            {
+                Cell cell = json.list[index];
+                cell.name = TBoxName.Text;
+                cell.avo = Convert.ToInt32(TBoxAVO.Text);
+                cell.def = Convert.ToInt32(TBoxDEF.Text);
+                cell.alt = Convert.ToInt32(TBoxALT.Text);
+                cell.other = TBoxOTHER.Text;
+            }
+
+            ReloadCellList();
+            CellListBox.SelectedIndex = index;
+        }
     }
 }

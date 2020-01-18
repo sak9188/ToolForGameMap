@@ -69,17 +69,26 @@ namespace WpfApplicationTest1
             }
         }
 
+        private CellListJson json;
         /// 生成cell list
         private void GenerateCellList(String path)
         {
-            CellListJson json = JsonHelp.LoadJsonFile(path);
+            json = JsonHelp.LoadJsonFile(path);
+            ReloadCellList();
+        }
+
+        private void ReloadCellList()
+        {
             IList<Cell> list = json.list;
             if (list != null)
             {
+                if (CellListBox.Items.Count != 0) CellListBox.Items.Clear();
                 int index = 1;
                 foreach (Cell item in list)
                 {
-                    CellListBox.Items.Add(new ToolListItem(item, index));
+                    var listItem = new ToolListItem(item, index);
+                    listItem.Selected += ToolListButton_Click;
+                    CellListBox.Items.Add(listItem);
                     index++;
                 }
             }
