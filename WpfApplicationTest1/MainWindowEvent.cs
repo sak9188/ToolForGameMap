@@ -7,6 +7,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Input;
+using System.Windows.Media;
 using WpfApplicationTest1.Entity;
 using WpfApplicationTest1.ToolControls;
 
@@ -33,6 +34,9 @@ namespace WpfApplicationTest1
             btn.C = json.list[index];
             isChangedMap = 1;
         }
+
+        private int isDrag = 0;
+
 
         private void ToolListButton_Click(object sender, RoutedEventArgs e)
         {

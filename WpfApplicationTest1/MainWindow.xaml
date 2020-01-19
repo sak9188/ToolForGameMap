@@ -97,6 +97,10 @@
                 <ListBox Height="279"  x:Name="CellListBox"></ListBox>
             </StackPanel>
         </StackPanel>
+        <StackPanel>
+            <CheckBox Width="55" Height="20" BorderBrush="#FF97FF00" Content="1" Foreground="#FFC54949" BorderThickness="0">
+            </CheckBox>
+        </StackPanel>
         <Canvas x:Name="ImageCanvas" Margin="5,0" VerticalAlignment="Top" HorizontalAlignment="Left">
             <Image x:Name= "BackgroundImage" Margin="5 0 0 0" VerticalAlignment="Top" HorizontalAlignment="Left" SizeChanged="BackgroundImage_SizeChanged">
                 <!-- 在这里初始化变换 -->
