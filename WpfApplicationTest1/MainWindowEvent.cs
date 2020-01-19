@@ -14,6 +14,7 @@ namespace WpfApplicationTest1
 {
     public partial class MainWindow : Window
     {
+        private int isChangedMap = 0;
         private int currentIdx = -1;
         private void ToolButton_Click(object sender, RoutedEventArgs e)
         {
@@ -30,6 +31,7 @@ namespace WpfApplicationTest1
             btn.SetBinding(BackgroundProperty, binding);
             // 数据层
             btn.C = json.list[index];
+            isChangedMap = 1;
         }
 
         private void ToolListButton_Click(object sender, RoutedEventArgs e)

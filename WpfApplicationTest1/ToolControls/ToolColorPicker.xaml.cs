@@ -38,7 +38,7 @@ namespace WpfApplicationTest1.ToolControls
         {
             SolidColorBrush brush = btn.Background as SolidColorBrush;
             brush.Color = (Color)cCanvas.SelectedColor;
-            btn.BorderBrush = new SolidColorBrush(Color.FromArgb(110, brush.Color.R, brush.Color.G, brush.Color.B));
+            btn.BorderBrush = new SolidColorBrush(Color.FromArgb(128, brush.Color.R, brush.Color.G, brush.Color.B));
         }
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)

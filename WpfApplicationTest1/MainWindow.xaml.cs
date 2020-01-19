@@ -18,6 +18,7 @@ using Winform = System.Windows.Forms;
 using System.Text.RegularExpressions;
 using WpfApplicationTest1.Entity;
 using WpfApplicationTest1.Help;
+using WpfApplicationTest1.ToolControls;
 
 namespace WpfApplicationTest1
 {
@@ -103,6 +104,13 @@ namespace WpfApplicationTest1
         private void Button_Click_Generate_Cell(object sender, RoutedEventArgs e)
         {
             if (lastValueTBoxCell == "") return;
+            if(isChangedMap == 1)
+            {
+                if(MessageBoxResult.Cancel == System.Windows.MessageBox.Show("你确定要重新生成吗？数据没了别怪我", "警告", MessageBoxButton.OKCancel))
+                {
+                    return;
+                }
+            }
             int iValue = Convert.ToInt32(lastValueTBoxCell);
             // 数字合理性判断
             if (iValue > 100) iValue = 100;
@@ -143,6 +151,11 @@ namespace WpfApplicationTest1
         private void Export_Cell_List_Button_Click(object sender, RoutedEventArgs e)
         {
             if (fileDirectory == null) return;
+            if (!Regex.IsMatch(json.name, outputPattern))
+            {
+                System.Windows.MessageBox.Show("你的list的name不要加各种垃圾符号");
+                return;
+            }
             JsonHelp.ListToFile(json, fileDirectory);
         }
 
@@ -177,9 +190,48 @@ namespace WpfApplicationTest1
             CellListBox.SelectedIndex = index;
         }
 
+        private readonly string outputPattern = @"(?!((^(con)$)|^(con)\\..*|(^(prn)$)|^(prn)\\..*|(^(aux)$)|^(aux)\\..*|(^(nul)$)|^(nul)\\..*|(^(com)[1-9]$)|^(com)[1-9]\\..*|(^(lpt)[1-9]$)|^(lpt)[1-9]\\..*)|^\\s+|.*\\s$)(^[^\\\\\\/\\:\\<\\>\\*\\?\\\\\\""\\\\|]{1,255}$)";
         private void Button_Click_Gen_Map_Json(object sender, RoutedEventArgs e)
         {
-
+            MapJson map = new MapJson();
+            if (json.md5 == null)
+            {
+                System.Windows.MessageBox.Show("你没有list怎么可以生成map？？？");
+                return;
+            }
+            map.md5 = json.md5;
+            if (!Regex.IsMatch(TBoxMapName.Text, outputPattern))
+            {
+                System.Windows.MessageBox.Show("不要给我乱搞");
+                return;
+            }
+            map.name = TBoxMapName.Text;
+            map.width = maxWidth;
+            map.height = maxHeight;
+            map.content = new Dictionary<int, string>();
+            var list = ImageCanvas.Children;
+            StringBuilder sb = new StringBuilder();
+            int lastV = 0;
+            for (int i = 1; i < list.Count; i++)
+            {
+                var btn = list[i] as ToolButton;
+                if(lastV != btn.X)
+                {
+                    map.content.Add(lastV, sb.ToString(0, sb.Length-1));
+                    sb.Clear();
+                    lastV = btn.X;
+                    if (lastV > maxHeight) break;
+                }
+                if(btn.C == null)
+                {
+                    sb.Append(0);
+                }else
+                {
+                    sb.Append(btn.C.idx);
+                }
+                sb.Append(" ");
+            }
+            JsonHelp.MapToFile(map, fileDirectory);
         }
 
         private void Delete_Button_Click(object sender, RoutedEventArgs e)

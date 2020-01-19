@@ -27,6 +27,8 @@ namespace WpfApplicationTest1
             GenerateButton();
         }
 
+        private int maxWidth = 0;
+        private int maxHeight = 0;
         private List<ToolButton> buttonlist = new List<ToolButton>();
         // 生成button
         private void GenerateButton()
@@ -39,12 +41,14 @@ namespace WpfApplicationTest1
                 double dCellLen = this.cellLen * this.scale;
                 // 清理 
                 ImageCanvas.Children.RemoveRange(1, ImageCanvas.Children.Count - 1);
+                maxWidth = 0;
+                maxHeight = 0;
+                int x = 0;
                 for (double i = 0; i < BackgroundImage.Source.Height * scale; i += dCellLen)
                 {
-                    int x = 0;
+                    int y = 0;
                     for (double j = 0; j < BackgroundImage.Source.Width * scale; j += dCellLen)
-                    {
-                        int y = 0;
+                    {                        
                         if (iter.Current != null)
                         {
                             iter.Current.SetCellLen(dCellLen);
@@ -55,7 +59,7 @@ namespace WpfApplicationTest1
                             // 设置xy
                             iter.Current.X = x;
                             iter.Current.Y = y;
-
+        
                             iter.MoveNext();
                         }
                         else
@@ -74,9 +78,19 @@ namespace WpfApplicationTest1
                         }
                         index++;
                         y++;
+                        if(maxWidth < y)
+                        {
+                            maxWidth = y;
+                        }
                     }
                     x++;
+                    if (maxHeight < x)
+                    {
+                        maxHeight = x;
+                    }
                 }
+
+                isChangedMap = 0;
             }
         }
 
@@ -98,6 +112,7 @@ namespace WpfApplicationTest1
                 foreach (Cell item in list)
                 {
                     var listItem = new ToolListItem(item, index);
+                    item.idx = index;
                     listItem.Selected += ToolListButton_Click;
                     CellListBox.Items.Add(listItem);
                     index++;

@@ -2,7 +2,7 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:tool="clr-namespace:WpfApplicationTest1.ToolControls"
-        Title="地图数据生成器" Height="675" Width="616"
+        Title="地图数据生成器" Height="723" Width="616"
         SizeToContent="WidthAndHeight"
         Background="#FAFAFAFA"
         >
@@ -29,6 +29,10 @@
                 <Label Content="图格大小"/>
                 <TextBox x:Name="TBoxCell" Width="70" TextChanged="TBoxCell_TextChanged"/>
                 <Button Content="生成" Width="72" Click="Button_Click_Generate_Cell"/>
+            </WrapPanel>
+            <WrapPanel Style="{StaticResource WrapStack}">
+                <Label Content="地图名称"/>
+                <TextBox  Width="142" x:Name="TBoxMapName"/>
             </WrapPanel>
             <WrapPanel Style="{StaticResource WrapStack}">
                 <Button Width="100">导入map json</Button>

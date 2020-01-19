@@ -38,17 +38,27 @@ namespace WpfApplicationTest1.Help
 
         public static void ListToFile(CellListJson list, string path)
         {
-            string objString = JsonConvert.SerializeObject(list);
-            string name = string.Format("\\{0}.json", list.name);
+            ObjToFile(list, list.name+".cell", path);
+        }
+
+        public static void MapToFile(MapJson json, string path)
+        {
+            ObjToFile(json, json.name+".map", path);
+        }
+
+        private static void ObjToFile(object obj, string objName, string path)
+        {
+            string objString = JsonConvert.SerializeObject(obj);
+            string name = string.Format("\\{0}.json", objName);
             int num = 0;
-            string namePath = path+name;
-            try 
-	        {
-                while(true)
+            string namePath = path + name;
+            try
+            {
+                while (true)
                 {
                     if (File.Exists(namePath))
                     {
-                        name = string.Format("\\{0}{1}.json", list.name, num);
+                        name = string.Format("\\{0}{1}.json", objName, num);
                         namePath = path + name;
                         num++;
                         continue;
@@ -59,12 +69,12 @@ namespace WpfApplicationTest1.Help
                         break;
                     }
                 }
-	        }
-	        catch (Exception)
-	        {
-		        MessageBox.Show("导出文件错误");
-	        }
-            MessageBox.Show(name+"导出成功");           
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("导出文件错误");
+            }
+            MessageBox.Show(name + "导出成功");  
         }
 
         /// <summary>

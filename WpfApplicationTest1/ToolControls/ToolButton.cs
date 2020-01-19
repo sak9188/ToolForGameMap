@@ -47,7 +47,7 @@ namespace WpfApplicationTest1.ToolControls
         private int y;
         public int Y
         {
-            get { return Y; }
+            get { return y; }
             set { y = value; }
         }
 
