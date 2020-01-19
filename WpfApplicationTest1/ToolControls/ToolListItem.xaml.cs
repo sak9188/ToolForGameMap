@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using WpfApplicationTest1.Entity;
+using Xceed.Wpf.Toolkit;
 
 namespace WpfApplicationTest1.ToolControls
 {
@@ -76,6 +77,12 @@ namespace WpfApplicationTest1.ToolControls
             AVO = avo;
             DEF = def;
             ALT = alt;
+        }
+
+        private void ListItem_Indexer_Click(object sender, RoutedEventArgs e)
+        {
+            ToolColorPicker pi = new ToolColorPicker();
+            pi.ShowDialog();
         }
     }
 }

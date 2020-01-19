@@ -1,0 +1,16 @@
+﻿<Window x:Class="WpfApplicationTest1.ToolControls.ToolColorPicker"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:xe="http://schemas.xceed.com/wpf/xaml/toolkit"
+        Title="ToolColorPicker"
+        SizeToContent="WidthAndHeight"
+        ResizeMode="NoResize"      
+        >
+    <StackPanel Background="#FFF7F7F7" Margin="5">
+        <xe:ColorCanvas VerticalAlignment="Top" 
+                        UsingAlphaChannel="False" Background="#FFF7F7F7"                      
+                        >
+        </xe:ColorCanvas>
+        <Button Content="确定" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="0,5"/>
+    </StackPanel>
+</Window>

@@ -17,7 +17,7 @@
             <ColumnDefinition Width="48"></ColumnDefinition>
         </Grid.ColumnDefinitions>
         
-        <Button Grid.Row="0" Grid.Column="0" Grid.RowSpan="2" Width="48" Height="48" x:Name="indexer" Content="1">
+        <Button Grid.Row="0" Grid.Column="0" Grid.RowSpan="2" Width="48" Height="48" x:Name="indexer" Content="1" Click="ListItem_Indexer_Click">
             <Button.Template>
                 <ControlTemplate TargetType="Button" >
                     <Border Background="#FFCFDCE8" Width="48" Height="48">
