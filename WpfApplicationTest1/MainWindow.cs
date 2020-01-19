@@ -41,8 +41,10 @@ namespace WpfApplicationTest1
                 ImageCanvas.Children.RemoveRange(1, ImageCanvas.Children.Count - 1);
                 for (double i = 0; i < BackgroundImage.Source.Height * scale; i += dCellLen)
                 {
+                    int x = 0;
                     for (double j = 0; j < BackgroundImage.Source.Width * scale; j += dCellLen)
                     {
+                        int y = 0;
                         if (iter.Current != null)
                         {
                             iter.Current.SetCellLen(dCellLen);
@@ -50,6 +52,10 @@ namespace WpfApplicationTest1
                             ImageCanvas.Children.Add(iter.Current);
                             Canvas.SetLeft(iter.Current, j + BackgroundImage.Margin.Left);
                             Canvas.SetTop(iter.Current, i + BackgroundImage.Margin.Top);
+                            // 设置xy
+                            iter.Current.X = x;
+                            iter.Current.Y = y;
+
                             iter.MoveNext();
                         }
                         else
@@ -62,9 +68,14 @@ namespace WpfApplicationTest1
                             Canvas.SetTop(button, i + BackgroundImage.Margin.Top);
                             Canvas.SetZIndex(button, 10);
                             button.Click += new RoutedEventHandler(ToolButton_Click);
+                            // 设置xy
+                            button.X = x;
+                            button.Y = y;
                         }
                         index++;
-                    }                    
+                        y++;
+                    }
+                    x++;
                 }
             }
         }
@@ -93,6 +104,21 @@ namespace WpfApplicationTest1
                 }
             }
             listName.Content = json.name;
+        }
+
+        private void RefreshButtton()
+        {
+            UIElementCollection list = ImageCanvas.Children;
+            for (int i = 0; i < list.Count; i++)
+            {
+                if (i == 0) continue;
+                var btn = list[i] as ToolButton;
+                if (btn.C != null && btn.C.delete)
+                {
+                    btn.Background = Brushes.Transparent;
+                    btn.C = null;
+                }
+            }
         }
     }
 }

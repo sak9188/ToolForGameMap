@@ -9,7 +9,7 @@ namespace WpfApplicationTest1.Entity
 {
     public class CellListJson
     {
-        public BigInteger md5;
+        public string md5;
         public string name;
         public List<Cell> list;
     }
@@ -18,6 +18,9 @@ namespace WpfApplicationTest1.Entity
     {
         [NonSerialized]
         public int idx;
+
+        [NonSerialized]
+        public bool delete = false;
 
         public string name;
         public int avo;

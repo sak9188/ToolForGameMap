@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Data;
 using System.Windows.Input;
 using WpfApplicationTest1.Entity;
 using WpfApplicationTest1.ToolControls;
@@ -19,10 +21,15 @@ namespace WpfApplicationTest1
             currentIdx = btn.Index;
             // 显示层
             if (CellListBox.SelectedIndex == -1) return;
-            int index = CellListBox.SelectedIndex;
-            ToolListItem item = CellListBox.SelectedItem as ToolListItem;
+            int index = CellListBox.SelectedIndex;            
             // 处理一下颜色问题
-            btn.Background = item.indexer.BorderBrush;
+            ToolListItem item = CellListBox.SelectedItem as ToolListItem;
+            Binding binding = new Binding();
+            binding.Source = item.indexer;
+            binding.Path = new System.Windows.PropertyPath(BorderBrushProperty);
+            btn.SetBinding(BackgroundProperty, binding);
+            // 数据层
+            btn.C = json.list[index];
         }
 
         private void ToolListButton_Click(object sender, RoutedEventArgs e)

@@ -32,7 +32,7 @@
             </WrapPanel>
             <WrapPanel Style="{StaticResource WrapStack}">
                 <Button Width="100">导入map json</Button>
-                <Button Width="100">生成map json</Button>
+                <Button Width="100" Click="Button_Click_Gen_Map_Json">生成map json</Button>
             </WrapPanel>
             <WrapPanel>
                 <!-- cell信息 -->
@@ -79,7 +79,7 @@
                 <WrapPanel>
                     <Button Width="60" Click="Import_Cell_List_Button_Click">导入list</Button>
                     <Button Width="60" Click="Export_Cell_List_Button_Click">导出list</Button>
-                    <Button Width="80">
+                    <Button Width="80" Click="Delete_Button_Click">
                         <Button.Background>
                             <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
                                 <GradientStop Color="#FFF3F3F3" Offset="0"/>

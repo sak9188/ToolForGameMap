@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
+using WpfApplicationTest1.Entity;
 
 namespace WpfApplicationTest1.ToolControls
 {
@@ -26,6 +27,28 @@ namespace WpfApplicationTest1.ToolControls
         {
             get { return index; }
             set { index = value; base.Content = value; }
+        }
+
+        private Cell c;
+
+        public Cell C
+        {
+            get { return c; }
+            set { c = value; }
+        }
+
+        private int x;
+        public int X
+        {
+            get { return x; }
+            set { x = value; }
+        }
+
+        private int y;
+        public int Y
+        {
+            get { return Y; }
+            set { y = value; }
         }
 
 

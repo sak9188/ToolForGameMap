@@ -176,5 +176,21 @@ namespace WpfApplicationTest1
             ReloadCellList();
             CellListBox.SelectedIndex = index;
         }
+
+        private void Button_Click_Gen_Map_Json(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Delete_Button_Click(object sender, RoutedEventArgs e)
+        {
+            if(CellListBox.SelectedItem != null)
+            {
+                json.list[CellListBox.SelectedIndex].delete = true;
+                json.list.RemoveAt(CellListBox.SelectedIndex);
+                ReloadCellList();
+                RefreshButtton();
+            }
+        }
     }
 }

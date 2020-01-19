@@ -9,7 +9,7 @@ namespace WpfApplicationTest1.Entity
 {
     public class MapJson
     {
-        public BigInteger md5;
+        public string md5;
         public string name;
         public int width;
         public int height;
