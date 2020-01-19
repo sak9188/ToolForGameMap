@@ -16,7 +16,9 @@ namespace WpfApplicationTest1.Entity
 
     public class Cell
     {
+        [NonSerialized]
         public int idx;
+
         public string name;
         public int avo;
         public int def;

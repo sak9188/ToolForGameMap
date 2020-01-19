@@ -78,7 +78,7 @@
                 <Label Content="---CELL选择---" HorizontalAlignment="Center"></Label>
                 <WrapPanel>
                     <Button Width="60" Click="Import_Cell_List_Button_Click">导入list</Button>
-                    <Button Width="60" Click="Import_Cell_List_Button_Click">导出list</Button>
+                    <Button Width="60" Click="Export_Cell_List_Button_Click">导出list</Button>
                     <Button Width="80">
                         <Button.Background>
                             <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">

@@ -123,6 +123,7 @@ namespace WpfApplicationTest1
             ImageCanvas.Height = BackgroundImage.Height;
         }
 
+        private string fileDirectory;
         private void Import_Cell_List_Button_Click(object sender, RoutedEventArgs e)
         {
             using (Winform.OpenFileDialog openFileDialog = new Winform.OpenFileDialog())
@@ -134,24 +135,15 @@ namespace WpfApplicationTest1
                 if (openFileDialog.ShowDialog() == Winform.DialogResult.OK)
                 {   
                     GenerateCellList(openFileDialog.FileName);
+                    fileDirectory = System.IO.Path.GetDirectoryName(openFileDialog.FileName);
                 }
             }
         }
 
         private void Export_Cell_List_Button_Click(object sender, RoutedEventArgs e)
         {
-            // JsonHelp.ListToFile(json, );
-            using (Winform.OpenFileDialog openFileDialog = new Winform.OpenFileDialog())
-            {
-                openFileDialog.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory);
-                openFileDialog.Filter = "json文件 (*.json)|*.json|所有文件 (*.*)|*.*";
-                openFileDialog.FilterIndex = 1;
-                openFileDialog.RestoreDirectory = true;
-                if (openFileDialog.ShowDialog() == Winform.DialogResult.OK)
-                {
-                    GenerateCellList(openFileDialog.FileName);
-                }
-            }
+            if (fileDirectory == null) return;
+            JsonHelp.ListToFile(json, fileDirectory);
         }
 
         private string priviousName;

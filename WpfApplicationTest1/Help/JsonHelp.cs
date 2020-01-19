@@ -29,9 +29,20 @@ namespace WpfApplicationTest1.Help
             return objJson;
         }
 
-        public static bool ListToFile(CellListJson list, string path)
+        public static void ListToFile(CellListJson list, string path)
         {
-            return false;
+            string objString = JsonConvert.SerializeObject(list);
+            string name = string.Format("\\{0}.json", list.name);
+            try 
+	        {
+                File.WriteAllText(path+name, objString, Encoding.UTF8);
+	        }
+	        catch (Exception)
+	        {
+		        MessageBox.Show("导出文件错误");
+	        }
+            MessageBox.Show(name+"导出成功");
+           
         }
     }
 }
