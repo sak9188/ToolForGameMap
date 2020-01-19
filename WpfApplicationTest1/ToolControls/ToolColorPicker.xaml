@@ -9,8 +9,10 @@
     <StackPanel Background="#FFF7F7F7" Margin="5">
         <xe:ColorCanvas VerticalAlignment="Top" 
                         UsingAlphaChannel="False" Background="#FFF7F7F7"                      
+                        x:Name="cCanvas"
+                        SelectedColorChanged="cCanvas_SelectedColorChanged"
                         >
         </xe:ColorCanvas>
-        <Button Content="确定" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="0,5"/>
+        <Button Content="确定" HorizontalAlignment="Right" VerticalAlignment="Top" Width="75" Margin="0,5"/>
     </StackPanel>
 </Window>

@@ -79,9 +79,10 @@ namespace WpfApplicationTest1.ToolControls
             ALT = alt;
         }
 
-        private void ListItem_Indexer_Click(object sender, RoutedEventArgs e)
+        private void Button_Indexer_Click(object sender, RoutedEventArgs e)
         {
-            ToolColorPicker pi = new ToolColorPicker();
+            Button btn = sender as Button;
+            ToolColorPicker pi = new ToolColorPicker(btn);
             pi.ShowDialog();
         }
     }

@@ -19,9 +19,25 @@ namespace WpfApplicationTest1.ToolControls
     /// </summary>
     public partial class ToolColorPicker : Window
     {
+        private Button btn;
         public ToolColorPicker()
         {
             InitializeComponent();
         }
+
+        public ToolColorPicker(Button btn):this()
+        {
+            this.btn = btn;
+            SolidColorBrush brush = btn.BorderBrush as SolidColorBrush;
+            cCanvas.SelectedColor = brush.Color;
+        }
+
+        private void cCanvas_SelectedColorChanged(object sender, RoutedPropertyChangedEventArgs<Color?> e)
+        {
+            SolidColorBrush brush = btn.Background as SolidColorBrush;
+            brush.Color = (Color)cCanvas.SelectedColor;
+        }
+
+
     }
 }
