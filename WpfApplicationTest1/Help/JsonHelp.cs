@@ -33,9 +33,25 @@ namespace WpfApplicationTest1.Help
         {
             string objString = JsonConvert.SerializeObject(list);
             string name = string.Format("\\{0}.json", list.name);
+            int num = 0;
+            string namePath = path+name;
             try 
 	        {
-                File.WriteAllText(path+name, objString, Encoding.UTF8);
+                while(true)
+                {
+                    if (File.Exists(namePath))
+                    {
+                        name = string.Format("\\{0}{1}.json", list.name, num);
+                        namePath = path + name;
+                        num++;
+                        continue;
+                    }
+                    else
+                    {
+                        File.WriteAllText(namePath, objString, Encoding.UTF8);
+                        break;
+                    }
+                }
 	        }
 	        catch (Exception)
 	        {

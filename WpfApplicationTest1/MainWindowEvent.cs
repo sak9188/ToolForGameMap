@@ -17,6 +17,11 @@ namespace WpfApplicationTest1
         {
             ToolButton btn = sender as ToolButton;
             currentIdx = btn.Index;
+            // 显示层
+            if (CellListBox.SelectedIndex == -1) return;
+            int index = CellListBox.SelectedIndex;
+            ToolListItem item = CellListBox.SelectedItem as ToolListItem;
+            btn.Background = item.indexer.Background;
         }
 
         private void ToolListButton_Click(object sender, RoutedEventArgs e)

@@ -17,19 +17,27 @@
             <ColumnDefinition Width="48"></ColumnDefinition>
         </Grid.ColumnDefinitions>
         
-        <Label Grid.Row="0" Grid.Column="0" Grid.RowSpan="2" Background="#FFCFDCE8" Width="48" Height="48" x:Name="indexer">1</Label>
+        <Button Grid.Row="0" Grid.Column="0" Grid.RowSpan="2" Width="48" Height="48" x:Name="indexer" Content="1">
+            <Button.Template>
+                <ControlTemplate TargetType="Button" >
+                    <Border Background="#FFCFDCE8" Width="48" Height="48">
+                        <ContentPresenter Content="{Binding Path=Content, RelativeSource={RelativeSource TemplatedParent}}"></ContentPresenter>
+                    </Border>
+                </ControlTemplate>
+            </Button.Template>
+        </Button>
         
         <Label Grid.Row="0" Grid.Column="1" x:Name="lName">name</Label>
-        <Label Grid.Row="0" Grid.Column="1" Width="16" Height="4" Padding="0" FontSize="4" Background="#FF666060" VerticalAlignment="Bottom" HorizontalAlignment="Right">
+        <Label Grid.Row="0" Grid.Column="1" Width="48" Height="4" Padding="0" FontSize="4" Background="#FF666060" VerticalAlignment="Bottom" HorizontalAlignment="Right">
         </Label>
         <Label Grid.Row="0" Grid.Column="2" x:Name="lAvo">avo</Label>
-        <Label Grid.Row="0" Grid.Column="2" Width="16" Height="4" Background="#FFE6BC72" VerticalAlignment="Bottom" HorizontalAlignment="Right">
+        <Label Grid.Row="0" Grid.Column="2" Width="48" Height="4" Background="#FFE6BC72" VerticalAlignment="Bottom" HorizontalAlignment="Right">
         </Label>
         <Label Grid.Row="1" Grid.Column="1" x:Name="lDef">def</Label>
-        <Label Grid.Row="1" Grid.Column="1" Width="16" Height="4" Background="#FF6C7BDC" VerticalAlignment="Bottom" HorizontalAlignment="Right">
+        <Label Grid.Row="1" Grid.Column="1" Width="48" Height="4" Background="#FF6C7BDC" VerticalAlignment="Bottom" HorizontalAlignment="Right">
         </Label>
         <Label Grid.Row="1" Grid.Column="2" x:Name="lAlt" >alt</Label>
-        <Label Grid.Row="1" Grid.Column="2" Width="16" Height="4" Background="#FFE66060" VerticalAlignment="Bottom" HorizontalAlignment="Right">
+        <Label Grid.Row="1" Grid.Column="2" Width="48" Height="4" Background="#FFE66060" VerticalAlignment="Bottom" HorizontalAlignment="Right">
         </Label>
     </Grid>
 </ListBoxItem>
