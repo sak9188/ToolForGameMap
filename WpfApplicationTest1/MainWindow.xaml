@@ -19,7 +19,7 @@
             <WrapPanel Style="{StaticResource WrapStack}">
                 <Label Content="图片路径"/>
                 <TextBox x:Name="TBoxImgPath" Width="104" IsEnabled="False" VerticalAlignment="Center" Height="26" Text="点击选择路径" />
-                <Button Padding="5 0 5 0" BorderThickness="0" Content="选择" Click="Button_Click_Search_Img"/>
+                <Button Padding="5 0 5 0" BorderThickness="0" Content="选择" Click="Button_Click_Search_Img" Width="38"/>
             </WrapPanel>
             <WrapPanel Style="{StaticResource WrapStack}" >
                 <Label Content="图片缩放因子"/>
@@ -97,8 +97,22 @@
                 <ListBox Height="279"  x:Name="CellListBox"></ListBox>
             </StackPanel>
         </StackPanel>
-        <StackPanel>
-            <CheckBox Width="55" Height="20" BorderBrush="#FF97FF00" Content="1" Foreground="#FFC54949" BorderThickness="0">
+        <StackPanel Margin="5,0">
+            <CheckBox Background="#FF0088FF" Width="24" Height="24">
+                <CheckBox.Template>
+                    <ControlTemplate TargetType="CheckBox">
+                        <Border Cursor="Hand" x:Name="border" Background="{Binding Background, RelativeSource={RelativeSource TemplatedParent}}"
+                            />
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsChecked" Value="True">
+                                <Setter TargetName="border" Property="Background" Value="Black"/>
+                            </Trigger>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Opacity" Value="0.1"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </CheckBox.Template>
             </CheckBox>
         </StackPanel>
         <Canvas x:Name="ImageCanvas" Margin="5,0" VerticalAlignment="Top" HorizontalAlignment="Left">
