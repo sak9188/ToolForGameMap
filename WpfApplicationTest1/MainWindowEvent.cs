@@ -21,7 +21,8 @@ namespace WpfApplicationTest1
             if (CellListBox.SelectedIndex == -1) return;
             int index = CellListBox.SelectedIndex;
             ToolListItem item = CellListBox.SelectedItem as ToolListItem;
-            btn.Background = item.indexer.Background;
+            // 处理一下颜色问题
+            btn.Background = item.indexer.BorderBrush;
         }
 
         private void ToolListButton_Click(object sender, RoutedEventArgs e)
