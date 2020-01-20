@@ -21,23 +21,10 @@ namespace WpfApplicationTest1
         {
             ToolButton btn = sender as ToolButton;
             currentIdx = btn.Index;
-            // 显示层
-            if (CellListBox.SelectedIndex == -1) return;
-            int index = CellListBox.SelectedIndex;            
-            // 处理一下颜色问题
-            ToolListItem item = CellListBox.SelectedItem as ToolListItem;
-            Binding binding = new Binding();
-            binding.Source = item.indexer;
-            binding.Path = new System.Windows.PropertyPath(BorderBrushProperty);
-            btn.SetBinding(BackgroundProperty, binding);
-            // 数据层
-            btn.C = json.list[index];
-            isChangedMap = 1;
+            ButtonSelecte(btn);
         }
 
         private int isDrag = 0;
-
-
         private void ToolListButton_Click(object sender, RoutedEventArgs e)
         {
             ToolListItem item = sender as ToolListItem;                

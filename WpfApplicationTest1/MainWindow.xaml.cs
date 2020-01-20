@@ -257,5 +257,35 @@ namespace WpfApplicationTest1
         {
             Canvas.SetZIndex(ShellRectangle, 1);
         }
+
+
+        private void ShellRectangle_MouseMove(object sender, System.Windows.Input.MouseEventArgs e)
+        {            
+            if(Mouse.LeftButton == MouseButtonState.Pressed)
+            {
+                Point p = Mouse.GetPosition(ShellRectangle);
+                IList<ToolButton> list = GetButtonsByTwoPoint(firstPoint, p);
+                TBoxOTHER.Text = list.Count.ToString();
+                SelecteButtons(list);
+            }
+        }
+
+        private Point firstPoint;
+        private void ShellRectangle_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            isDrag = 1;
+            // TODO 记录一个ButtonPoint
+            firstPoint = Mouse.GetPosition(ShellRectangle);
+        }
+
+        private void ShellRectangle_MouseUp(object sender, MouseButtonEventArgs e)
+        {
+            if (isDrag == 1)
+            {
+                isDrag = 0;
+            }
+        }
+
+        
     }
 }
