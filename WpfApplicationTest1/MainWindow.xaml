@@ -144,7 +144,7 @@
         <Canvas x:Name="ImageCanvas" VerticalAlignment="Top" HorizontalAlignment="Left">
             <Rectangle x:Name= "ShellRectangle" Margin="0,5"  VerticalAlignment="Top" HorizontalAlignment="Left" Fill="Transparent" 
                        MouseMove="ShellRectangle_MouseMove" MouseDown="ShellRectangle_MouseDown" 
-                       MouseUp="ShellRectangle_MouseUp"
+                       MouseUp="ShellRectangle_MouseUp" MouseLeave="ShellRectangle_MouseLeave"
                        />
             <Image x:Name= "BackgroundImage" Margin="0,5" VerticalAlignment="Top" HorizontalAlignment="Left" SizeChanged="BackgroundImage_SizeChanged" Panel.ZIndex="5">
                 <!-- 在这里初始化变换 -->

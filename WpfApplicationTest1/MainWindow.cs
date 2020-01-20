@@ -44,6 +44,7 @@ namespace WpfApplicationTest1
                 int index = 0;
                 double dCellLen = this.cellLen * this.scale;
                 // 清理 
+                ResetButton();
                 ImageCanvas.Children.RemoveRange(buttonStartIndex, ImageCanvas.Children.Count - buttonStartIndex);
                 maxWidth = (int)Math.Ceiling(BackgroundImage.Source.Width / this.cellLen);
                 maxHeight = (int)Math.Ceiling(BackgroundImage.Source.Height / this.cellLen);
@@ -120,15 +121,23 @@ namespace WpfApplicationTest1
 
         private void RefreshButtton()
         {
-            UIElementCollection list = ImageCanvas.Children;
-            for (int i = buttonStartIndex; i < list.Count; i++)
+            foreach (ToolButton item in buttonlist)
             {
-                var btn = list[i] as ToolButton;
-                if (btn.C != null && btn.C.delete)
+                if (item.C != null && item.C.delete)
                 {
-                    btn.Background = Brushes.Transparent;
-                    btn.C = null;
+                    item.Background = Brushes.Transparent;
+                    item.C = null;
                 }
+            }
+        }
+
+        private void ResetButton()
+        {
+            foreach (ToolButton item in buttonlist)
+            {
+                BindingOperations.ClearAllBindings(item);
+                item.Background = Brushes.Transparent;
+                item.C = null;
             }
         }
 
@@ -149,12 +158,20 @@ namespace WpfApplicationTest1
         {
             int x = (int)Math.Floor(p.X / (cellLen * scale));
             int y = (int)Math.Floor(p.Y / (cellLen * scale));
-            int index = y * maxWidth + x;
+            if (x >= maxWidth)
+            {
+                x = maxWidth - 1;
+            }
+            if (y >= maxHeight)
+            {
+                y = maxHeight - 1;
+            }
+            int index = Convert.ToInt32(y * maxWidth + x);
             return index;
         }
 
         private ToolButton GetButtonByPoint(Point p)
-        {
+        {            
             // 计算是哪个按钮被按到了
             int index = GetButtonIndexByPoint(p);
             return buttonlist[index] as ToolButton;
@@ -213,6 +230,14 @@ namespace WpfApplicationTest1
             {
                 ButtonSelecte(item);
             }
+        }
+
+        private bool CheckPoint(Point p)
+        {
+            if (firstPoint.X < BackgroundImage.Width || firstPoint.Y < BackgroundImage.Height)
+                return true;
+            else
+                return false;
         }
     }
 }
