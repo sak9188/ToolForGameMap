@@ -27,6 +27,8 @@ namespace WpfApplicationTest1
     /// </summary>
     public partial class MainWindow : Window
     {
+        private int buttonStartIndex = 2;
+
         public MainWindow()
         {
             InitializeComponent();
@@ -50,6 +52,7 @@ namespace WpfApplicationTest1
                     BackgroundImage.Source = bi;
                     ScaleBackgroundImage(1);
                     TBoxImgPath.Text = openFileDialog.FileName;
+                    ToolPanel.Visibility = System.Windows.Visibility.Visible;
                 }
             }
         }
@@ -212,7 +215,7 @@ namespace WpfApplicationTest1
             var list = ImageCanvas.Children;
             StringBuilder sb = new StringBuilder();
             int lastV = 0;
-            for (int i = 1; i < list.Count; i++)
+            for (int i = buttonStartIndex; i < list.Count; i++)
             {
                 var btn = list[i] as ToolButton;
                 if(lastV != btn.X)
@@ -243,6 +246,11 @@ namespace WpfApplicationTest1
                 ReloadCellList();
                 RefreshButtton();
             }
+        }
+
+        private void RadioButton_Checked_Multi_Selecte(object sender, RoutedEventArgs e)
+        {
+            
         }
     }
 }

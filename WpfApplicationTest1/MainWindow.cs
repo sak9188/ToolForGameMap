@@ -40,7 +40,7 @@ namespace WpfApplicationTest1
                 int index = 0;
                 double dCellLen = this.cellLen * this.scale;
                 // 清理 
-                ImageCanvas.Children.RemoveRange(1, ImageCanvas.Children.Count - 1);
+                ImageCanvas.Children.RemoveRange(buttonStartIndex, ImageCanvas.Children.Count - buttonStartIndex);
                 maxWidth = 0;
                 maxHeight = 0;
                 int x = 0;
@@ -124,9 +124,8 @@ namespace WpfApplicationTest1
         private void RefreshButtton()
         {
             UIElementCollection list = ImageCanvas.Children;
-            for (int i = 0; i < list.Count; i++)
+            for (int i = buttonStartIndex; i < list.Count; i++)
             {
-                if (i == 0) continue;
                 var btn = list[i] as ToolButton;
                 if (btn.C != null && btn.C.delete)
                 {
