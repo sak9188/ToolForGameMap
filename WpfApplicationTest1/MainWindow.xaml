@@ -98,17 +98,23 @@
             </StackPanel>
         </StackPanel>
         <StackPanel Margin="5,0">
-            <CheckBox Background="#FF0088FF" Width="24" Height="24">
+            <CheckBox Background="#FF0088FF" Width="28" Height="28" Margin="0, 5">
                 <CheckBox.Template>
                     <ControlTemplate TargetType="CheckBox">
-                        <Border Cursor="Hand" x:Name="border" Background="{Binding Background, RelativeSource={RelativeSource TemplatedParent}}"
-                            />
+                        <Border Cursor="Hand" x:Name="border">
+                            <Border.Background>
+                                <ImageBrush ImageSource="Resources/multi_selecte.png" Stretch="Uniform"/>
+                            </Border.Background>
+                        </Border>
                         <ControlTemplate.Triggers>
                             <Trigger Property="IsChecked" Value="True">
-                                <Setter TargetName="border" Property="Background" Value="Black"/>
+                                <Setter TargetName="border" Property="BorderThickness" Value="2">
+                                </Setter>
+                                <Setter TargetName="border" Property="BorderBrush" Value="#FF618ABB">
+                                </Setter>
                             </Trigger>
                             <Trigger Property="IsMouseOver" Value="True">
-                                <Setter Property="Opacity" Value="0.1"/>
+                                <Setter Property="Opacity" Value="0.8"/>
                             </Trigger>
                         </ControlTemplate.Triggers>
                     </ControlTemplate>
