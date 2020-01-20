@@ -17,7 +17,7 @@
             <ColumnDefinition Width="48"></ColumnDefinition>
         </Grid.ColumnDefinitions>
 
-        <Button Grid.Row="0" Grid.Column="0" Grid.RowSpan="2" Width="48" Height="48" x:Name="indexer" Content="1" Click="Button_Indexer_Click" Background="#FFCFDCE8">
+        <Button Grid.Row="0" Grid.Column="0" Grid.RowSpan="2" Width="48" Height="48" x:Name="indexer" Content="1" Click="Button_Indexer_Click" Background="#FFCFDCE8" BorderBrush="#70CFDCE8">
             <Button.Template>
                 <ControlTemplate TargetType="Button" >
                     <Border Background="{Binding Path=Background, RelativeSource={RelativeSource TemplatedParent}}" Width="48" Height="48">

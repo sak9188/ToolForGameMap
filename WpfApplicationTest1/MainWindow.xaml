@@ -98,12 +98,32 @@
             </StackPanel>
         </StackPanel>
         <StackPanel Margin="5,0">
-            <CheckBox Background="#FF0088FF" Width="28" Height="28" Margin="0, 5">
-                <CheckBox.Template>
-                    <ControlTemplate TargetType="CheckBox">
+            <RadioButton  Width="28" Height="28" Margin="0, 5" IsChecked="True">
+                <RadioButton.Template>
+                    <ControlTemplate TargetType="RadioButton">
                         <Border Cursor="Hand" x:Name="border">
                             <Border.Background>
-                                <ImageBrush ImageSource="Resources/multi_selecte.png" Stretch="Uniform"/>
+                                <ImageBrush ImageSource="pack://application:,,,/Resources/selecte.png" Stretch="Uniform"/>
+                            </Border.Background>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsChecked" Value="True">
+                                <Setter TargetName="border" Property="BorderThickness" Value="2"/>
+                                <Setter TargetName="border" Property="BorderBrush" Value="#FF618ABB"/>
+                            </Trigger>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Opacity" Value="0.8"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </RadioButton.Template>
+            </RadioButton>
+            <RadioButton  Width="28" Height="28" Margin="0, 5">
+                <RadioButton.Template>
+                    <ControlTemplate TargetType="RadioButton">
+                        <Border Cursor="Hand" x:Name="border">
+                            <Border.Background>
+                                <ImageBrush ImageSource="pack://application:,,,/Resources/multi_selecte.png" Stretch="Uniform"/>
                             </Border.Background>
                         </Border>
                         <ControlTemplate.Triggers>
@@ -118,11 +138,11 @@
                             </Trigger>
                         </ControlTemplate.Triggers>
                     </ControlTemplate>
-                </CheckBox.Template>
-            </CheckBox>
+                </RadioButton.Template>
+            </RadioButton>
         </StackPanel>
-        <Canvas x:Name="ImageCanvas" Margin="5,0" VerticalAlignment="Top" HorizontalAlignment="Left">
-            <Image x:Name= "BackgroundImage" Margin="5 0 0 0" VerticalAlignment="Top" HorizontalAlignment="Left" SizeChanged="BackgroundImage_SizeChanged">
+        <Canvas x:Name="ImageCanvas" VerticalAlignment="Top" HorizontalAlignment="Left">
+            <Image x:Name= "BackgroundImage" Margin="0,5" VerticalAlignment="Top" HorizontalAlignment="Left" SizeChanged="BackgroundImage_SizeChanged">
                 <!-- 在这里初始化变换 -->
                 <Image.RenderTransform>
                     <ScaleTransform/>

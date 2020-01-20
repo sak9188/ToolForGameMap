@@ -106,7 +106,7 @@ namespace WpfApplicationTest1
             if (lastValueTBoxCell == "") return;
             if(isChangedMap == 1)
             {
-                if(MessageBoxResult.Cancel == System.Windows.MessageBox.Show("你确定要重新生成吗？数据没了别怪我", "警告", MessageBoxButton.OKCancel))
+                if(MessageBoxResult.Cancel == System.Windows.MessageBox.Show("你确定要重新生成吗？数据没了别怪自己手贱", "警告", MessageBoxButton.OKCancel))
                 {
                     return;
                 }

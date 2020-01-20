@@ -45,8 +45,8 @@ namespace WpfApplicationTest1.ToolControls
         {
             if (flag == 0)
             {
-                SolidColorBrush brush = btn.Background as SolidColorBrush;
-                brush.Color = lastColor;
+                btn.Background = new SolidColorBrush(lastColor);
+                btn.BorderBrush = new SolidColorBrush(Color.FromArgb(128, lastColor.R, lastColor.G, lastColor.B));
             }
             btn = null;
         }
