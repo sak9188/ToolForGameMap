@@ -25,6 +25,7 @@ namespace WpfApplicationTest1
                 BackgroundImage.Height = BackgroundImage.Source.Height * scale;
             }
             GenerateButton();
+            ChangeShell();
         }
 
         private int maxWidth = 0;
@@ -133,6 +134,19 @@ namespace WpfApplicationTest1
                     btn.C = null;
                 }
             }
+        }
+
+        private void ChangeShellToTop()
+        {
+            ChangeShell();
+            Canvas.SetZIndex(ShellRectangle, 100);
+        }
+
+        private void ChangeShell()
+        {
+            int offset = cellLen;
+            ShellRectangle.Width = BackgroundImage.Width + offset;
+            ShellRectangle.Height = BackgroundImage.Height + offset;
         }
     }
 }

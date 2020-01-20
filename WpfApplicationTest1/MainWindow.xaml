@@ -98,7 +98,7 @@
             </StackPanel>
         </StackPanel>
         <StackPanel Margin="5,0" x:Name="ToolPanel" Visibility="Visible">
-            <RadioButton  Width="28" Height="28" Margin="0, 5" IsChecked="True">
+            <RadioButton  Width="28" Height="28" Margin="0, 5" Checked="RadioButton_Checked_Single_Selecte">
                 <RadioButton.Template>
                     <ControlTemplate TargetType="RadioButton">
                         <Border Cursor="Hand" x:Name="border">
@@ -142,7 +142,7 @@
             </RadioButton>
         </StackPanel>
         <Canvas x:Name="ImageCanvas" VerticalAlignment="Top" HorizontalAlignment="Left">
-            <Image x:Name= "ShellImage" Margin="0,5"  VerticalAlignment="Top" HorizontalAlignment="Left" OpacityMask="Transparent"/>
+            <Rectangle x:Name= "ShellRectangle" Margin="0,5"  VerticalAlignment="Top" HorizontalAlignment="Left" Fill="Transparent"/>
             <Image x:Name= "BackgroundImage" Margin="0,5" VerticalAlignment="Top" HorizontalAlignment="Left" SizeChanged="BackgroundImage_SizeChanged" Panel.ZIndex="5">
                 <!-- 在这里初始化变换 -->
                 <Image.RenderTransform>

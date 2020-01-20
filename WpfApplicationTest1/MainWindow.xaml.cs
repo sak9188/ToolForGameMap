@@ -250,7 +250,12 @@ namespace WpfApplicationTest1
 
         private void RadioButton_Checked_Multi_Selecte(object sender, RoutedEventArgs e)
         {
-            
+            ChangeShellToTop();
+        }
+
+        private void RadioButton_Checked_Single_Selecte(object sender, RoutedEventArgs e)
+        {
+            Canvas.SetZIndex(ShellRectangle, 1);
         }
     }
 }
