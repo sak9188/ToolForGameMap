@@ -49,10 +49,10 @@ namespace WpfApplicationTest1
                 maxWidth = (int)Math.Ceiling(BackgroundImage.Source.Width / this.cellLen);
                 maxHeight = (int)Math.Ceiling(BackgroundImage.Source.Height / this.cellLen);
                 int y = 0;
-                for (double i = 0; i < BackgroundImage.Source.Height * scale; i += dCellLen)
+                for (double i = 0; i + dCellLen < BackgroundImage.Source.Height * scale; i += dCellLen)
                 {
                     int x = 0;
-                    for (double j = 0; j < BackgroundImage.Source.Width * scale; j += dCellLen)
+                    for (double j = 0; j + dCellLen < BackgroundImage.Source.Width * scale; j += dCellLen)
                     {                        
                         if (iter.Current != null)
                         {
