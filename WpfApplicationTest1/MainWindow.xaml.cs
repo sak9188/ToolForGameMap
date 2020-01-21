@@ -52,7 +52,11 @@ namespace WpfApplicationTest1
                     BackgroundImage.Source = bi;
                     ScaleBackgroundImage(1);
                     TBoxImgPath.Text = openFileDialog.FileName;
+                    // 重置图片大小框
+                    ResetTBoxImage();
+                    // ToolPanel
                     ToolPanel.Visibility = System.Windows.Visibility.Visible;
+                    RadioSingle.IsChecked = true; 
                 }
             }
         }
@@ -212,17 +216,16 @@ namespace WpfApplicationTest1
             map.width = maxWidth;
             map.height = maxHeight;
             map.content = new Dictionary<int, string>();
-            var list = ImageCanvas.Children;
             StringBuilder sb = new StringBuilder();
             int lastV = 0;
-            for (int i = buttonStartIndex; i < list.Count; i++)
+            for (int i = 0; i <= finalIndex; i++)
             {
-                var btn = list[i] as ToolButton;
-                if(lastV != btn.X)
+                var btn = buttonlist[i];
+                if(lastV != btn.Y)
                 {
                     map.content.Add(lastV, sb.ToString(0, sb.Length-1));
                     sb.Clear();
-                    lastV = btn.X;
+                    lastV = btn.Y;
                     if (lastV > maxHeight) break;
                 }
                 if(btn.C == null)
@@ -264,6 +267,7 @@ namespace WpfApplicationTest1
             Point p = Mouse.GetPosition(ShellRectangle);
             if (Mouse.LeftButton == MouseButtonState.Pressed && isUsePoint)
             {
+                TBoxOTHER.Text = GetButtonIndexByPoint(p).ToString();
                 IList<ToolButton> list = GetButtonsByTwoPoint(firstPoint, p);
                 SelecteButtons(list);          
             }
@@ -287,6 +291,37 @@ namespace WpfApplicationTest1
         private void ShellRectangle_MouseLeave(object sender, System.Windows.Input.MouseEventArgs e)
         {
             isUsePoint = false;
+        }
+
+        private void Button_Click_Reset_Image(object sender, RoutedEventArgs e)
+        {
+            if (BackgroundImage.Source == null) return;
+            BackgroundImage.Width = BackgroundImage.Source.Width * scale;
+            BackgroundImage.Height = BackgroundImage.Source.Height * scale;
+
+            ResetTBoxImage();
+        }
+
+
+
+        private string lastValueTBoxImage = "";
+        private const string patternTBoxImage = "^[0-9]{0,4}$";
+        private void TBoxImage_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            string input = TBoxCell.Text;
+            if (input == "")
+            {
+                lastValueTBoxImage = "";
+                return;
+            }
+            if (!Regex.IsMatch(input, patternTBoxImage))
+            {
+                TBoxCell.Text = lastValueTBoxImage;
+                TBoxCell.SelectionStart = lastValueTBoxImage.Length;
+                return;
+            }
+            // 保存上一个值
+            lastValueTBoxImage = input;
         }
 
         

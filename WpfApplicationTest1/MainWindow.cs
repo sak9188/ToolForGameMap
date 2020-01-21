@@ -33,6 +33,7 @@ namespace WpfApplicationTest1
         private int maxWidth = 0;
         private int maxHeight = 0;
         private List<ToolButton> buttonlist = new List<ToolButton>();
+        private int finalIndex = 0;
         // 生成button
         private void GenerateButton()
         {
@@ -41,13 +42,13 @@ namespace WpfApplicationTest1
             {
                 var iter = buttonlist.GetEnumerator();
                 iter.MoveNext();
-                int index = 0;
+                finalIndex = 0;
                 double dCellLen = this.cellLen * this.scale;
                 // 清理 
                 ResetButton();
                 ImageCanvas.Children.RemoveRange(buttonStartIndex, ImageCanvas.Children.Count - buttonStartIndex);
-                maxWidth = (int)Math.Ceiling(BackgroundImage.Source.Width / this.cellLen);
-                maxHeight = (int)Math.Ceiling(BackgroundImage.Source.Height / this.cellLen);
+                maxWidth = (int)Math.Ceiling(BackgroundImage.Source.Width / this.cellLen) - 1;
+                maxHeight = (int)Math.Ceiling(BackgroundImage.Source.Height / this.cellLen) - 1;
                 int y = 0;
                 for (double i = 0; i + dCellLen < BackgroundImage.Source.Height * scale; i += dCellLen)
                 {
@@ -69,7 +70,7 @@ namespace WpfApplicationTest1
                         }
                         else
                         {
-                            ToolButton button = new ToolButton(index, dCellLen);
+                            ToolButton button = new ToolButton(finalIndex, dCellLen);
                             buttonlist.Add(button);
                             // 放置
                             ImageCanvas.Children.Add(button);
@@ -83,7 +84,7 @@ namespace WpfApplicationTest1
 
                         }
                         // 其他操作
-                        index++;
+                        finalIndex++;
                         x++;
                     }
                     y++;
@@ -232,12 +233,11 @@ namespace WpfApplicationTest1
             }
         }
 
-        private bool CheckPoint(Point p)
+        private void ResetTBoxImage()
         {
-            if (firstPoint.X < BackgroundImage.Width || firstPoint.Y < BackgroundImage.Height)
-                return true;
-            else
-                return false;
+            if (BackgroundImage.Source == null) return;
+            TBoxImageWidth.Text = BackgroundImage.Source.Width.ToString("0");
+            TBoxImageHeight.Text = BackgroundImage.Source.Height.ToString("0");
         }
     }
 }

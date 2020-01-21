@@ -19,6 +19,7 @@ namespace WpfApplicationTest1.ToolControls
     /// </summary>
     public partial class ToolColorPicker : Window
     {
+        private byte transparentValue = 128;
         private Button btn;
         public ToolColorPicker()
         {
@@ -38,7 +39,7 @@ namespace WpfApplicationTest1.ToolControls
         {
             SolidColorBrush brush = btn.Background as SolidColorBrush;
             brush.Color = (Color)cCanvas.SelectedColor;
-            btn.BorderBrush = new SolidColorBrush(Color.FromArgb(128, brush.Color.R, brush.Color.G, brush.Color.B));
+            btn.BorderBrush = new SolidColorBrush(Color.FromArgb(transparentValue, brush.Color.R, brush.Color.G, brush.Color.B));
         }
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
@@ -46,7 +47,7 @@ namespace WpfApplicationTest1.ToolControls
             if (flag == 0)
             {
                 btn.Background = new SolidColorBrush(lastColor);
-                btn.BorderBrush = new SolidColorBrush(Color.FromArgb(128, lastColor.R, lastColor.G, lastColor.B));
+                btn.BorderBrush = new SolidColorBrush(Color.FromArgb(transparentValue, lastColor.R, lastColor.G, lastColor.B));
             }
             btn = null;
         }

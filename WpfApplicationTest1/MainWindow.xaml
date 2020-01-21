@@ -22,6 +22,16 @@
                 <Button Padding="5 0 5 0" BorderThickness="0" Content="选择" Click="Button_Click_Search_Img" Width="38"/>
             </WrapPanel>
             <WrapPanel Style="{StaticResource WrapStack}" >
+                <Label Content="长："/>
+                <TextBox  Width="66" x:Name="TBoxImageHeight" TextChanged="TBoxImage_TextChanged"/>
+                <Label Content="宽："/>
+                <TextBox  Width="66" x:Name="TBoxImageWidth" TextChanged="TBoxImage_TextChanged"/> 
+            </WrapPanel>
+            <WrapPanel Style="{StaticResource WrapStack}" >
+                <Button Content="重置图片长宽" Click="Button_Click_Reset_Image"/>
+                <Button Content="点击改变图片长宽" Width="122"/>
+            </WrapPanel>
+            <WrapPanel Style="{StaticResource WrapStack}" >
                 <Label Content="图片缩放因子"/>
                 <TextBox x:Name="TBoxScale" Width="118" TextChanged="TBoxScale_TextChanged"/>
             </WrapPanel>
@@ -97,8 +107,8 @@
                 <ListBox Height="279"  x:Name="CellListBox"></ListBox>
             </StackPanel>
         </StackPanel>
-        <StackPanel Margin="5,0" x:Name="ToolPanel" Visibility="Visible">
-            <RadioButton  Width="28" Height="28" Margin="0, 5" Checked="RadioButton_Checked_Single_Selecte">
+        <StackPanel Margin="5,0" x:Name="ToolPanel" Visibility="Collapsed">
+            <RadioButton x:Name="RadioSingle" Width="28" Height="28" Margin="0, 5" Checked="RadioButton_Checked_Single_Selecte">
                 <RadioButton.Template>
                     <ControlTemplate TargetType="RadioButton">
                         <Border Cursor="Hand" x:Name="border">
