@@ -29,7 +29,7 @@
             </WrapPanel>
             <WrapPanel Style="{StaticResource WrapStack}" >
                 <Button Content="重置图片长宽" Click="Button_Click_Reset_Image"/>
-                <Button Content="点击改变图片长宽" Width="122"/>
+                <Button Content="点击改变图片长宽" Width="124"/>
             </WrapPanel>
             <WrapPanel Style="{StaticResource WrapStack}" >
                 <Label Content="图片缩放因子"/>
