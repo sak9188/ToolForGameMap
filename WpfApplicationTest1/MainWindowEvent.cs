@@ -15,6 +15,11 @@ namespace WpfApplicationTest1
 {
     public partial class MainWindow : Window
     {
+        private void InitEvent()
+        {
+
+        }
+
         private int isChangedMap = 0;
         private int currentIdx = -1;
         private void ToolButton_Click(object sender, RoutedEventArgs e)

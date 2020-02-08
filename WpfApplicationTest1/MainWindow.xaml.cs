@@ -19,6 +19,7 @@ using System.Text.RegularExpressions;
 using WpfApplicationTest1.Entity;
 using WpfApplicationTest1.Help;
 using WpfApplicationTest1.ToolControls;
+using System.Windows.Interop;
 
 namespace WpfApplicationTest1
 {
@@ -32,6 +33,14 @@ namespace WpfApplicationTest1
         public MainWindow()
         {
             InitializeComponent();
+            InitXAML();
+            Init();
+            InitEvent();
+        }
+
+        public void InitXAML()
+        {
+
         }
 
         private void Button_Click_Search_Img(object sender, RoutedEventArgs e)
@@ -324,6 +333,31 @@ namespace WpfApplicationTest1
             lastValueTBoxImage = input;
         }
 
-        
+        private void Button_Click_Close_Window(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
+
+        private void Button_Click_Minimize(object sender, RoutedEventArgs e)
+        {
+            this.WindowState = System.Windows.WindowState.Minimized;
+        }
+
+        private void Button_Click_Maxmaize(object sender, RoutedEventArgs e)
+        {
+            if (WindowState == WindowState.Maximized)
+            {
+
+                WindowState = WindowState.Normal;
+
+                // 设置窗口的大小
+                WindowArea.Width = lastWindowWidth;
+                WindowArea.Height = lastWindowHeight;
+            }
+            else
+            {
+                this.Maxmize();
+            }
+        }
     }
 }

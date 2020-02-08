@@ -7,6 +7,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Input;
+using System.Windows.Interop;
 using System.Windows.Media;
 using WpfApplicationTest1.Entity;
 using WpfApplicationTest1.Help;
@@ -16,6 +17,18 @@ namespace WpfApplicationTest1
 {
     public partial class MainWindow : Window
     {
+
+        public void Init()
+        {
+            SetLastWindowSize();
+        }
+
+        private void SetLastWindowSize()
+        {
+            lastWindowHeight = WindowArea.Height;
+            lastWindowWidth = WindowArea.Width;
+        }
+
         private double scale = 1;
         // 缩放图片
         private void ScaleBackgroundImage(double scale)
@@ -238,6 +251,28 @@ namespace WpfApplicationTest1
             if (BackgroundImage.Source == null) return;
             TBoxImageWidth.Text = BackgroundImage.Source.Width.ToString("0");
             TBoxImageHeight.Text = BackgroundImage.Source.Height.ToString("0");
+        }
+
+        private double lastWindowWidth;
+        private double lastWindowHeight;
+        private void Maxmize()
+        {
+            WindowStyle = WindowStyle.None;
+            ResizeMode = ResizeMode.NoResize;
+            Topmost = true;//最大化后总是在最上面 
+                           //获取窗口句柄 
+            var handle = new WindowInteropHelper(this).Handle;
+            //获取当前显示器屏幕
+            System.Windows.Forms.Screen screen = System.Windows.Forms.Screen.FromHandle(handle);
+
+            //调整窗口最大化,全屏的关键代码就是下面3句 
+            this.MaxWidth = screen.Bounds.Width;
+            this.MaxHeight = screen.Bounds.Height;
+            WindowState = WindowState.Maximized;
+
+            //调整区域最大化
+            WindowArea.Width = MaxWidth;
+            WindowArea.Height = MaxWidth;
         }
     }
 }
